@@ -40,6 +40,7 @@ on early-fs
 on init
     start hwservicemanager
     setprop crypto.ready 1
+    start qti.vibrator-1-2
 
 service sbinqseecomd /sbin/qseecomd
     user root
@@ -111,3 +112,9 @@ on property:vendor.sys.listeners.registered=true
     start keymaster-4-0
     start gatekeeper-1-0
     start servicemanager
+
+service qti.vibrator-1-2 /system/bin/vendor.qti.hardware.vibrator@1.2-service
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
